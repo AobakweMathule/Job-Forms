@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application</title> 
+    <title>Job Application</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -70,7 +72,7 @@
                     </div>    
                     <div class="form-group">
                       <fieldset>
-    <legend>Relocation:</legend>
+    <legend> Willing to Relocate:</legend>
     <input type="radio" id="relocate_yes" name="relocation" value="yes" required>
     <label for="relocate_yes">Yes</label><br>
     <input type="radio" id="relocate_no" name="relocation" value="no">
@@ -83,15 +85,66 @@
                         <textarea id="resume" name="resume" rows="4" cols="50" required></textarea>
 
                       </div> 
-                      <div class="form-group">
-                       <form action="/submit-page" method="post">
-   >
-    <input type="submit" value="Submit Form">
-    <input type="reset" value="Reset Form">
-</form>
-                      </div> 
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </div>
         </form>
     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('jobApplicationForm');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default submission
+                event.stopPropagation();
+
+                // Custom validation for Radio buttons (Bootstrap JS handles most, but this ensures visual feedback)
+                const employmentRadios = document.getElementsByName('employment_type');
+                let employmentValid = false;
+                for(let i = 0; i < employmentRadios.length; i++) {
+                    if(employmentRadios[i].checked) {
+                        employmentValid = true;
+                        break;
+                    }
+                }
+
+                if (form.checkValidity() && employmentValid) {
+                    // If form is valid, show success message
+                    document.getElementById('successMessage').classList.remove('d-none');
+                    form.classList.add('d-none'); // Hide the form
+                    
+                    // Optional: Log data to console
+                    console.log("Form Submitted Successfully");
+                    
+                    // In a real app, you would allow the form.submit() to proceed to backend
+                    // or use fetch() to send data via AJAX.
+                } else {
+                    // Add Bootstrap validation styling to show errors
+                    form.classList.add('was-validated');
+                    
+                    if(!employmentValid) {
+                        document.getElementById('empTypeError').style.display = "block !important";
+                        document.getElementById('empTypeError').classList.add('d-block');
+                    }
+                }
+            }, false);
+        });
+
+        function resetForm() {
+            const form = document.getElementById('jobApplicationForm');
+            form.classList.remove('was-validated'); // Remove validation styles
+            form.reset(); // Reset input values
+            document.getElementById('successMessage').classList.add('d-none'); // Hide success msg if visible
+            form.classList.remove('d-none'); // Show form again if hidden
+        }
+    </script>
+    
+        
+
 </body>
 </html>
 
