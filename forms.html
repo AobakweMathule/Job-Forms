@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title> 
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    
+        <h1>Job Application Form</h1>
+        <form action="/submit-application" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                 <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required
+                      placeholder="Enter your full name">
+                </div>  
+            
+           <div class="form-group">
+                 <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required
+                     placeholder="Enter your email address" > 
+                  </div>  
+            
+              <div class="form-group">
+                   <label for="Telephone">Telephone Number:</label>
+                    <input type="tel" id="phone" name="phone" required
+                    placeholder="Enter your phone number">
+                </div>
+                                        
+                  <div class="form-group">                      
+                        <label for ="Physical Address">Physical Address:</label>
+                          <input type="text" id="address" name="address" required
+                    placeholder="Enter your physical address">
+                    </div>
+
+                    <div class="form-group">
+                 
+
+
+      <fieldset>
+    <legend>Employment Type:</legend>
+                <input type="radio" id="ptc" name="employment_type" value="ptc" required>
+                <label for="ptc">Part-time contract</label><br>
+                <input type="radio" id="ptp" name="employment_type" value="ptp">
+                <label for="ptp">Part-time permanent</label><br>
+                <input type="radio" id="ftc" name="employment_type" value="ftc">
+                <label for="ftc">Full-time contract</label><br>
+                <input type="radio" id="ftp" name="employment_type" value="ftp">
+                <label for="ftp">Full-time permanent</label>
+  </fieldset>
+                    </div>
+
+                    <div class="form-group">
+                      <fieldset>
+    <legend>Position:</legend>
+    <input type="checkbox" id="position1" name="Account Executive" value="position1">
+    <label for="position1">Account Executive</label><br>
+    <input type="checkbox" id="position2" name="Business Development Manager" value="position2">
+    <label for="position2">Business Development Manager</label><br>
+    <input type="checkbox" id="position3" name="Inside Sales Associate" value="position3">
+    <label for="position3">Inside Sales Associate</label><br>
+    <input type="checkbox" id="position4" name="Sales Manager" value="position4">
+    <label for="position4">Sales Manager</label><br>
+    <input type="checkbox" id="position5" name="VP Sales" value="position5">
+    <label for="position5">VP Sales</label><br>
+    
+ </fieldset>
+                    </div>    
+                    <div class="form-group">
+                      <fieldset>
+    <legend>Relocation:</legend>
+    <input type="radio" id="relocate_yes" name="relocation" value="yes" required>
+    <label for="relocate_yes">Yes</label><br>
+    <input type="radio" id="relocate_no" name="relocation" value="no">
+    <label for="relocate_no">No</label><br>
+ 
+                          </fieldset>
+                      </div>
+                      <div class="form-group">
+                        <label for="resume">Give a brief description of why you are suitable for the role:</label>
+                        <textarea id="resume" name="resume" rows="4" cols="50" required></textarea>
+
+                      </div> 
+                      <div class="form-group">
+                       <form action="/submit-page" method="post">
+   >
+    <input type="submit" value="Submit Form">
+    <input type="reset" value="Reset Form">
+</form>
+                      </div> 
+        </form>
+    </div>
+</body>
+</html>
+    
+   
