@@ -91,9 +91,12 @@
                         <textarea id="resume" name="resume" rows="4" cols="50" required></textarea>
 
                       </div> 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
-                <button type="submit" class="btn btn-primary">Submit Application</button>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                      </div>
+                      
+                      
             </div>
         </form>
     </div>
@@ -105,10 +108,10 @@
             const form = document.getElementById('jobApplicationForm');
 
             form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default submission
+                event.preventDefault(); 
                 event.stopPropagation();
 
-                // Custom validation for Radio buttons (Bootstrap JS handles most, but this ensures visual feedback)
+               
                 const employmentRadios = document.getElementsByName('employment_type');
                 let employmentValid = false;
                 for(let i = 0; i < employmentRadios.length; i++) {
@@ -119,16 +122,17 @@
                 }
 
                 if (form.checkValidity() && employmentValid) {
-                    // If form is valid, show success message
-                    document.getElementById('successMessage').classList.remove('d-none');
-                    form.classList.add('d-none'); // Hide the form
+
+                  document.getElementById('successMessage').classList.remove('d-none');
+                    form.classList.add('d-none'); 
                     
-                    // Optional: Log data to console
+                   
+
                     console.log("Form Submitted Successfully");
                     
                      
                 } else {
-                    // Add Bootstrap validation styling to show errors
+                    
                     form.classList.add('was-validated');
                     
                     if(!employmentValid) {
@@ -141,10 +145,14 @@
 
         function resetForm() {
             const form = document.getElementById('jobApplicationForm');
-            form.classList.remove('was-validated'); // Remove validation styles
-            form.reset(); // Reset input values
-            document.getElementById('successMessage').classList.add('d-none'); // Hide success msg if visible
-            form.classList.remove('d-none'); // Show form again if hidden
+            form.classList.remove('was-validated'); 
+            
+            form.reset(); 
+            
+            document.getElementById('successMessage').classList.add('d-none'); 
+
+            form.classList.remove('d-none'); 
+            
         }
     </script>
     
